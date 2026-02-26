@@ -1,0 +1,143 @@
+-L/usr/include/postgresql/
+
+
+Error
+
+
+Reading symbols from csv...
+(gdb) run
+Starting program: /home/alex/Desktop/csvparser/csv 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+warning: could not find '.gnu_debugaltlink' file for /lib/x86_64-linux-gnu/liblber.so.2
+
+Program received signal SIGSEGV, Segmentation fault.
+__memcpy_sse2_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:333
+warning: 333	../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S: No such file or directory
+(gdb) backtrace
+#0  __memcpy_sse2_unaligned_erms () at ../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:333
+#1  0x00007ffff7c60d88 in __GI_memcpy (__len=5, __src=<optimized out>, __dest=<optimized out>) at ../string/bits/string_fortified.h:29
+#2  __printf_buffer_write (buf=buf@entry=0x7fffffffd990, s=<optimized out>, s@entry=0x555555556028 "host=%s dbname=%s user=%s password=%s", 
+    count=count@entry=5) at ./stdio-common/Xprintf_buffer_write.c:39
+#3  0x00007ffff7c6910c in __printf_buffer (buf=buf@entry=0x7fffffffd990, format=0x555555556028 "host=%s dbname=%s user=%s password=%s", 
+    ap=0x7fffffffd9e0, mode_flags=0) at ./stdio-common/vfprintf-internal.c:653
+#4  0x00007ffff7c889e7 in __vsprintf_internal (string=<optimized out>, maxlen=maxlen@entry=18446744073709551615, format=<optimized out>, 
+    args=args@entry=0x7fffffffd9e0, mode_flags=mode_flags@entry=0) at ./libio/iovsprintf.c:62
+#5  0x00007ffff7c664c7 in __sprintf (s=<optimized out>, format=<optimized out>) at ./stdio-common/sprintf.c:30
+#6  0x0000555555555376 in main (argc=1, argv=0x7fffffffdc28) at csv.c:27
+
+
+
+
+
+
+
+linker error
+
+ gcc csv.c -o csv -L/usr/include/postgresql/ -lpq
+csv.c:4:10: fatal error: libpq-fe.h: No such file or directory
+    4 | #include <libpq-fe.h>
+      |          ^~~~~~~~~~~~
+compilation terminated.
+
+worked  
+pkg-config --cflags libpq
+
+
+
+
+
+Database connection
+
+gcc csv.c -o csv -I/usr/include/postgresql -lpq
+
+  ~/Desktop/csvparser 2026-02-13 15:11   
+❯ ./csv
+Connection Established...
+database: true_db
+user: truecaller_user
+host: localhost
+port: 5432
+
+field[1] = 919150000098
+field[2] = Sistema Shyam TeleServices
+field[3] = Lakhan Garg
+field[4] = 
+field[5] = 
+field[6] = 
+field[7] = 
+field[8] = lakhangarg92@gmail.com
+field[9] = 
+field[10] = 
+
+
+
+field[1] = 919150000150
+field[2] = Sistema Shyam TeleServices
+field[3] = 
+field[4] = 
+field[5] = 
+field[6] = 
+field[7] = 
+field[8] = 
+field[9] = 
+field[10] = 
+
+
+
+field[1] = 919150000925
+field[2] = Sistema Shyam TeleServices
+field[3] = Raja Mohanraj
+field[4] = 
+field[5] = 
+field[6] = 
+field[7] = 
+field[8] = rajamohanrajs@gmail.com
+field[9] = 
+field[10] = 
+
+
+
+field[1] = 919150001499
+field[2] = Sistema Shyam TeleServices
+field[3] = Poornima Saru
+field[4] = 
+field[5] = 
+field[6] = 
+field[7] = 
+field[8] = 
+field[9] = 
+field[10] = 
+
+
+
+field[1] = 919150001494
+field[2] = Sistema Shyam TeleServices
+field[3] = Rekha
+field[4] = 
+field[5] = 
+field[6] = 
+field[7] = 
+field[8] = 
+field[9] = 
+field[10] = 
+
+
+
+field[1] = 919150001444
+field[2] = Sistema Shyam TeleServices
+field[3] = Dhanda Pani
+field[4] = 
+field[5] = 
+field[6] = 
+field[7] = 
+field[8] = snookedhana@gmail.com
+field[9] = 
+field[10] = 
+
+
+
+
+
+csv_buf = 919150001434,Sistema Shyam TeleServices,Boominathan  P Boominathan  P,,,,,,,
+

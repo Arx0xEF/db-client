@@ -1,0 +1,12 @@
+CREATE TABLE 249k-Sistema_Shyam(
+id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+Number TEXT NOT NULL,
+Carrier TEXT,
+Name TEXT,
+Gender TEXT,
+Address TEXT,
+JobTitle TEXT,
+CompanyName TEXT,
+Email TEXT,
+Facebook TEXT,
+Twitter TEXT );
